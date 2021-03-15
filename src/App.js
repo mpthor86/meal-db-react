@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
+import MealContainer from './components/MealContainer';
+import {connect} from 'react-redux'
+import React, {Component} from 'react'
+import {fetchCategories} from './actions/mealActions'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+class App extends Component {
+  componentDidMount(){
+    this.props.fetchCategories()
+  }
+
+  render(){
+    return (
+      <div className="App">
+      <MealContainer meals={this.props.meals} status={this.props.loading}/>
     </div>
-  );
+    )
+  }
 }
 
-export default App;
+const stateToProps = state => {
+    return {
+      meals: state.meals,
+      loading: state.loading
+    }
+}
+
+const dispToProps = disp => {
+  return {
+    fetchCategories: () => disp(fetchCategories())
+  }
+}
+
+export default connect(stateToProps, dispToProps)(App)
