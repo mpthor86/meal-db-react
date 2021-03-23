@@ -1,11 +1,16 @@
 import React from 'react'
+import Meal from './Meal'
 
-export default class MealContainer extends React.Component{
-    render() {
+class MealContainer extends React.Component {
+    render(){
+        console.log(this.props)
         return(
+            
             <div>
-               <img alt="" src='chttps://media1.giphy.com/media/12uXi1GXBibALC/giphy.gif' />
+                {this.props.status === true ? "" : <Meal meal={this.props.meal}/> }
             </div>
         )
     }
 }
+
+export default MealContainer
