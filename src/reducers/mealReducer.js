@@ -1,19 +1,20 @@
+
 const mealReducer = (state = {meals: [], loading: false}, action) => {
     switch(action.type){
-        case 'GET_CATEGORIES':
+        case 'GET_MEALS':
             return{
                 ...state,
                 meals: [state.meals],
                 loading: true
             }
 
-        case 'ADD_CATEGORIES':
+        case 'ADD_RANDOM_MEAL':
             return{
                 ...state,
-                meals: action.strCategory,
+                meals: action.meals,
                 loading: false
             }
-
+        
         default:
             return state
     }
