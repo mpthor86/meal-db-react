@@ -1,19 +1,22 @@
-//import logo from './logo.svg';
 import './App.css';
-import MealContainer from './components/MealContainer';
+import CategoryContainer from './components/CategoryContainer';
+import MealContainer from './components/MealContainer'
 import {connect} from 'react-redux'
 import React, {Component} from 'react'
-import {fetchCategories} from './actions/mealActions'
+import {fetchCategories, fetchMeals} from './actions/mealActions'
 
 class App extends Component {
   componentDidMount(){
     this.props.fetchCategories()
+    this.props.fetchMeals()
   }
 
   render(){
     return (
       <div className="App">
-      <MealContainer meals={this.props.meals} status={this.props.loading}/>
+        <h1><u>The Meal DB on React</u></h1>
+      <CategoryContainer categories={this.props.categories} status={this.props.loading}/>
+      {this.props.loading === true ? "" : <MealContainer meal={this.props.meals} status={this.props.mealLoading}/>}
     </div>
     )
   }
@@ -21,14 +24,17 @@ class App extends Component {
 
 const stateToProps = state => {
     return {
-      meals: state.meals,
-      loading: state.loading
+      meals: state.mealReducer.meals,
+      mealLoading: state.mealReducer.loading,
+      categories: state.categoryReducer.categories,
+      categoryLoading: state.categoryReducer.loading
     }
 }
-
+ 
 const dispToProps = disp => {
   return {
-    fetchCategories: () => disp(fetchCategories())
+    fetchCategories: () => disp(fetchCategories()),
+    fetchMeals: () => disp(fetchMeals())
   }
 }
 
