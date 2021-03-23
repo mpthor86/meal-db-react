@@ -9196,6 +9196,13 @@
     "regenerator-runtime" "^0.13.7"
     "whatwg-fetch" "^3.4.1"
 
+"react-combine-reducers@^1.1.1":
+  "integrity" "sha512-wHVJj9RdtoqSY8np9CFgOjUxHZwrlKvETOyJ3EZwDrVkQ8evz/Kl9khZ1ZzcirdNwAAWa2gDNqPfDsYtMtoHBQ=="
+  "resolved" "https://registry.npmjs.org/react-combine-reducers/-/react-combine-reducers-1.1.1.tgz"
+  "version" "1.1.1"
+  dependencies:
+    "core-js" "^3.6.5"
+
 "react-dev-utils@^11.0.3":
   "integrity" "sha512-4lEA5gF4OHrcJLMUV1t+4XbNDiJbsAWCH5Z2uqlTqW6dD7Cf5nEASkeXrCI/Mz83sI2o527oBIFKVMXtRf1Vtg=="
   "resolved" "https://registry.npmjs.org/react-dev-utils/-/react-dev-utils-11.0.3.tgz"
