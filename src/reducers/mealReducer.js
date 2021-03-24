@@ -1,20 +1,18 @@
 
-const mealReducer = (state = {meals: [], loading: false}, action) => {
+const mealReducer = (state = {meals: [], randomMeal: [], loading: false}, action) => {
     switch(action.type){
         case 'GET_MEALS':
             return{
                 ...state,
-                meals: [state.meals],
                 loading: true
             }
 
         case 'ADD_RANDOM_MEAL':
             return{
                 ...state,
-                meals: action.meals,
+                randomMeal: action.randomMeal,
                 loading: false
             }
-        
         default:
             return state
     }

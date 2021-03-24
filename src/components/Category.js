@@ -4,7 +4,7 @@ export default class Category extends React.Component {
     render(){
         return(
             <div>
-                <li>{this.props.name}</li>
+                <li>{this.props.category.strCategory}</li>
             </div>
         )
     }  
