@@ -1,13 +1,13 @@
 import '../Meal.css'
 
 const Meal = (props) => {
-    const meal = props.meal[0]
     return(
         <div className="meal-card">
-            Name: {meal.strMeal}<br></br>
-            Area: {meal.strArea}<br></br>
-            Category: {meal.strCategory}<br></br>
-            <img className="meal-pic" alt="" src={meal.strMealThumb} />
+            <h3>Heres a random Meal!</h3>
+           Name: {props.meal.strMeal}<br></br>
+           Area: {props.meal.strArea}<br></br>
+           Category: {props.meal.strCategory}<br></br>
+           <img className="meal-pic" alt="" src={props.meal.strMealThumb} />
         </div>
     )
 }
