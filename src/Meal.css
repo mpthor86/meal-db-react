@@ -1,15 +1,15 @@
 .meal-card {
-    text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bolder;
-    border: rgb(0, 0, 0) solid 2px;
-    padding: 1rem;
-    width: 15rem;
-    height: 25rem;
-    display: inline-grid;
-    margin: 1rem 2rem;
-    box-shadow: 3px 4px #000000;
-    background-color:lightblue;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bolder;
+  border: rgb(0, 0, 0) solid 2px;
+  padding: 1rem;
+  width: 15rem;
+  height: 25rem;
+  display: inline-grid;
+  margin: 1rem 2rem;
+  box-shadow: 3px 4px #000000;
+  background-color:lightblue;
   }
 
   .meal-pic {
