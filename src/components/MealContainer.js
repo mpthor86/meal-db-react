@@ -2,12 +2,14 @@ import React from 'react'
 import Meal from './Meal'
 
 class MealContainer extends React.Component {
+    renderRandom() {
+       return this.props.meal.map((m) => <Meal key={m.idMeal} meal={m}/>)
+    }
     render(){
-        console.log(this.props)
         return(
             
             <div>
-                {this.props.status === true ? "" : <Meal meal={this.props.meal}/> }
+                {this.renderRandom()}
             </div>
         )
     }
