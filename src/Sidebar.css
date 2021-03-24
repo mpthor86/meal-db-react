@@ -1,0 +1,19 @@
+.sidebar {
+    position: fixed;
+    top: 10%;
+    right: 0%;
+    text-align: left;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    border: rgb(0, 0, 0) solid 2px;
+    padding:5px;
+    width: 10rem;
+    height:max-content;
+    margin: 2rem 2rem;
+    background-color:lightblue;
+}
+
+.sidebar-header {
+    text-align: center;
+    font-weight:bolder;
+}

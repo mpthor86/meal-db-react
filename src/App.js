@@ -1,11 +1,12 @@
 import './App.css';
-import CategoryContainer from './components/CategoryContainer';
 import MealContainer from './components/MealContainer'
+import Sidebar from './components/Sidebar'
 import {connect} from 'react-redux'
 import React, {Component} from 'react'
 import {fetchCategories, fetchMeals} from './actions/mealActions'
 
 class App extends Component {
+
   componentDidMount(){
     this.props.fetchCategories()
     this.props.fetchMeals()
@@ -15,8 +16,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1><u>The Meal DB on React</u></h1>
-      <CategoryContainer categories={this.props.categories} status={this.props.loading}/>
-      {this.props.loading === true ? "" : <MealContainer meal={this.props.meals} status={this.props.mealLoading}/>}
+      <MealContainer meal={this.props.randomMeal} status={this.props.mealLoading}/>
+      <Sidebar categories={this.props.categories}/>
     </div>
     )
   }
@@ -24,7 +25,7 @@ class App extends Component {
 
 const stateToProps = state => {
     return {
-      meals: state.mealReducer.meals,
+      randomMeal: state.mealReducer.randomMeal,
       mealLoading: state.mealReducer.loading,
       categories: state.categoryReducer.categories,
       categoryLoading: state.categoryReducer.loading
