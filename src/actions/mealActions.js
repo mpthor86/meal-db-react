@@ -19,7 +19,7 @@ export const fetchCategories = () => {
 export const filterMealByCategory = (category) => {
     return (disp) => {
         disp({type: 'GET_MEALS'})
-        fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
+        fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category.toString()}`)
         .then(resp => resp.json())
         .then(json => {disp({type: 'ADD_MEALS', meals: json.meals})})
     }

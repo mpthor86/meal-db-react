@@ -13,6 +13,14 @@ const mealReducer = (state = {meals: [], randomMeal: [], loading: false}, action
                 randomMeal: action.randomMeal,
                 loading: false
             }
+
+        case 'ADD_MEALS':
+            return{
+                meals: action.meals,
+                randomMeal: [],
+                loading: false
+            }
+
         default:
             return state
     }

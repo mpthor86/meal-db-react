@@ -6,7 +6,8 @@ export default class CategoryContainer extends React.Component{
         return this.props.categories.map((c) => <Category key={c.idCategory} className="sidebar" category={c} handleClick={this.handleClick}/>)
     }
 
-    handleClick = (category) => {
+    handleClick = (e) => {
+        this.props.filterMeal(e.target.innerText)
     }
     
     render() {
@@ -18,3 +19,4 @@ export default class CategoryContainer extends React.Component{
         )
     }
 }
+
