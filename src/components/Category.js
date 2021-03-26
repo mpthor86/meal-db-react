@@ -4,7 +4,7 @@ export default class Category extends React.Component {
     render(){
         return(
             <div>
-                <li>{this.props.category.strCategory}</li>
+                <li className="category" onClick={this.props.handleClick} >{this.props.category.strCategory}</li>
             </div>
         )
     }  
