@@ -1,9 +1,12 @@
 import './App.css';
 import MealContainer from './components/MealContainer'
+import Signup from './components/Signup'
 import Sidebar from './components/Sidebar'
 import {connect} from 'react-redux'
 import React, {Component} from 'react'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import {fetchCategories, fetchMeals, filterMealByCategory} from './actions/mealActions'
+
 
 class App extends Component {
 
@@ -16,9 +19,13 @@ class App extends Component {
     return (
       <div className="App">
         <h1><u>The Meal DB on React</u></h1>
-      <MealContainer meals={this.props.meals} randomMeal={this.props.randomMeal} status={this.props.mealLoading}/>
-      <Sidebar filterMeal={this.props.filterMeal} categories={this.props.categories}/>
-    </div>
+          <Router>
+            <Switch>
+                  <Route exact path='/signup' component={Signup}/>
+                  <Route exact path='/' component={MealContainer, Sidebar}/>
+            </Switch>
+          </Router>
+      </div>
     )
   }
 }
