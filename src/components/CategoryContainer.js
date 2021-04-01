@@ -1,7 +1,9 @@
 import React from 'react'
 import Category from './Category'
+import {connect} from 'react-redux'
+import {filterMealByCategory} from '../actions/mealActions'
 
-export default class CategoryContainer extends React.Component{
+class CategoryContainer extends React.Component{
     renderCategories() {
         return this.props.categories.map((c) => <Category key={c.idCategory} className="sidebar" category={c} handleClick={this.handleClick}/>)
     }
@@ -20,3 +22,17 @@ export default class CategoryContainer extends React.Component{
     }
 }
 
+const mapStateToProps = state => {
+    return {
+      categories: state.categoryReducer.categories,
+      categoryLoading: state.categoryReducer.loading
+    }
+}
+
+const dispToProps = disp => {
+    return {
+      filterMeal: (category) => disp(filterMealByCategory(category))
+    }
+  }
+
+export default connect(mapStateToProps, dispToProps)(CategoryContainer)

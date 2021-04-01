@@ -1,6 +1,7 @@
 import React from 'react'
 import Meal from './Meal'
-
+import {connect} from 'react-redux'
+ 
 class MealContainer extends React.Component {
     renderRandom() {
        return this.props.randomMeal.map((m) => <Meal key={m.idMeal} meal={m}/>)
@@ -15,13 +16,21 @@ class MealContainer extends React.Component {
     }
     render(){
         return(
-            
             <div>
                 {this.renderRandom()}
                 {this.renderMeals()}
             </div>
+            
         )
     }
 }
 
-export default MealContainer
+const mapStateToProps = state => {
+    return {
+      meals: state.mealReducer.meals,
+      randomMeal: state.mealReducer.randomMeal,
+      mealLoading: state.mealReducer.loading
+    }
+}
+
+export default connect(mapStateToProps)(MealContainer)
