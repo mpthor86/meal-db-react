@@ -8,12 +8,14 @@ import {Provider} from 'react-redux'
 import appReducer from './reducers/appReducer'
 import mealReducer from './reducers/mealReducer'
 import categoryReducer from './reducers/categoryReducer'
+import authReducer from '../src/reducers/authReducer'
 //import reportWebVitals from './reportWebVitals';
 
 const rootReducer = combineReducers({
   appReducer,
   mealReducer,
-  categoryReducer
+  categoryReducer,
+  authReducer
 })
 
 const store = createStore(rootReducer, applyMiddleware(thunk))

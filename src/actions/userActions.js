@@ -1,4 +1,4 @@
-export const createUser = () => {
+export const createUser = (data) => {
     return (disp) => {
         fetch('http://[::1]:3000')
         .then(r => r.json())
