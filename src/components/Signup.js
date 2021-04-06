@@ -18,11 +18,13 @@ class Signup extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault()
         this.props.signup(this.state)
+        this.props.history.push('/')
     }
 
     render(){
         return(
             <div>
+                <h3>Please signup below</h3>
                 <form onSubmit={this.handleSubmit}>
                     <label>Username:</label>
                     <input name="username" value={this.state.username} onChange={this.handleChange} type='text' />
