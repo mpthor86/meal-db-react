@@ -5,7 +5,7 @@ import {filterMealByCategory} from '../actions/mealActions'
 
 class CategoryContainer extends React.Component{
     renderCategories() {
-        return this.props.categories.map((c) => <Category key={c.idCategory} className="sidebar" category={c} handleClick={this.handleClick}/>)
+        return this.props.categories.map((c) => <Category key={c.idCategory + 1} className="sidebar" category={c} handleClick={this.handleClick}/>)
     }
 
     handleClick = (e) => {
