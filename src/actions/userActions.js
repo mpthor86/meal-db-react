@@ -10,6 +10,6 @@ export const fetchUser = (user) => {
     return (disp) => {
         fetch(`http://[::1]:3000/${user}`)
         .then(r => r.json())
-        .then(json => disp({type: 'LOGIN', user: json.user}))
+        .then(json => disp({type: 'LOGIN', payload: {user: json.user}}))
     }
 }
