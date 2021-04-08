@@ -1,13 +1,13 @@
 import './App.css';
-import MealContainer from './components/MealContainer'
-import Signup from './components/Signup'
-import Login from './components/Login'
-import Sidebar from './components/Sidebar'
+import Home from './components/Home'
 import {connect} from 'react-redux'
 import React, {Component} from 'react'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import {fetchCategories, fetchMeals, filterMealByCategory} from './actions/mealActions'
+import {fetchCategories, fetchMeals} from './actions/mealActions'
 import {checkLoggedIn} from './actions/authActions'
+import Sidebar from './components/Sidebar'
+import Login from './components/Login'
+import Signup from './components/Signup'
 
 
 class App extends Component {
@@ -19,19 +19,15 @@ class App extends Component {
   }
   
   render(){
-    console.log(this.props.checkLoggedIn)
     return (
       <div className="App">
         <h1><u>The Meal DB on React</u></h1>
           <Router>
-          <Sidebar />
+                <Sidebar className='sidebar'/>
             <Switch>
-                  <Route exact path='/login' component={Login} />
-                  <Route exact path='/signup' component={Signup}/>
-                  <Route path='/' render={() => 
-                    <React.Fragment>
-                      <MealContainer />
-                    </React.Fragment>} />
+                <Route exact path='/login' component={Login} />
+                <Route exact path='/signup' component={Signup} />
+                <Route path='/' component={Home} />
             </Switch>
           </Router>
       </div>
@@ -39,23 +35,24 @@ class App extends Component {
   }
 }
 
-const stateToProps = state => {
-    return {
-      meals: state.mealReducer.meals,
-      randomMeal: state.mealReducer.randomMeal,
-      mealLoading: state.mealReducer.loading,
-      categories: state.categoryReducer.categories,
-      categoryLoading: state.categoryReducer.loading
-    }
-}
+//const stateToProps = state => {
+//    return {
+//      meals: state.mealReducer.meals,
+//      randomMeal: state.mealReducer.randomMeal,
+//      mealLoading: state.mealReducer.loading,
+//      categories: state.categoryReducer.categories,
+//      categoryLoading: state.categoryReducer.loading
+//    }
+//}
  
 const dispToProps = disp => {
   return {
     fetchCategories: () => disp(fetchCategories()),
     fetchMeals: () => disp(fetchMeals()),
-    filterMeal: (category) => disp(filterMealByCategory(category)),
     checkLoggedIn: () => disp(checkLoggedIn())
   }
 }
 
-export default connect(stateToProps, dispToProps)(App)
+export default connect(null, dispToProps)(App)
+
+//    filterMeal: (category) => disp(filterMealByCategory(category)),
