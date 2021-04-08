@@ -1,6 +1,6 @@
 export const signup = user => {
     return dispatch => {
-        fetch('http://[::1]:3000/users', {
+        fetch('http://localhost:3000/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -15,7 +15,7 @@ export const signup = user => {
 
 export const login = (user, history) => {
     return dispatch => {
-        fetch('http://[::1]:3000/sessions', {
+        fetch('http://localhost:3000/sessions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -35,7 +35,7 @@ export const login = (user, history) => {
 
 export const checkLoggedIn = () =>{
     return dispatch => {
-        fetch('http://[::1]:3000/logged_in', {
+        fetch('http://localhost:3000/logged_in', {
             credentials: 'include'
         })
         .then(res => res.json())
@@ -45,5 +45,16 @@ export const checkLoggedIn = () =>{
                 payload: {loggedIn: data.logged_in, currentUser: data.user}
             })
         })
+    }
+}
+
+export const logout = () => {
+    return dispatch => {
+        fetch('http://localhost:3000/logout', {
+            method: 'DELETE',
+            credentials: 'include'
+        })
+        .then(res => res.json())
+        .then(data => dispatch({type: 'LOGOUT'}))
     }
 }
