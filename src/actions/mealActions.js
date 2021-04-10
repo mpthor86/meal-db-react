@@ -24,3 +24,12 @@ export const filterMealByCategory = (category) => {
         .then(json => {disp({type: 'ADD_MEALS', meals: json.meals})})
     }
 }
+
+export const getMealDetails = (mealId) => {
+    return (disp) => {
+        disp({type: 'GET_MEALS'})
+        fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
+        .then(resp => resp.json())
+        .then(data => {disp({type: 'ADD_MEALS', meals: data.meals})})
+    }
+}
