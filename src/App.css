@@ -15,7 +15,7 @@
 
 .likeBtn {
   width:max-content;
-  
+  justify-self: center;
 }
 
 .App-header {

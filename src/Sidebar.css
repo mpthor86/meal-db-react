@@ -1,15 +1,16 @@
 .sidebar {
+    z-index: 1000;
     display: flex;
-    justify-content: flex-end;
-    position: sticky;
-    top: 10%;
-    right: 0%;
+    flex-direction: column;
+    position: fixed;
+    top: 0%;
+    left: 0%;
     text-align: left;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bolder;
     border: rgb(0, 0, 0) solid 2px;
     padding:5px;
-    width: 10rem;
+    width: auto;
     height:max-content;
     margin: 2rem 2rem;
     background-color:lightblue;
