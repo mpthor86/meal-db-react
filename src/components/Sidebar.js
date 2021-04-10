@@ -1,5 +1,5 @@
 import React from 'react'
-import CategoryContainer from './CategoryContainer'
+//import CategoryContainer from './CategoryContainer'
 import '../Sidebar.css'
 import {Link} from 'react-router-dom'
 import {logout} from '../actions/authActions'
@@ -12,6 +12,7 @@ class Sidebar extends React.Component {
                 <Link to='/'>Home</Link>
                 {this.props.loggedIn ? (
                     <>
+                    <Link to={`/users/${this.props.user.id}`} >Profile</Link>
                     <Link to="/" onClick={() => this.props.logout()}>Logout</Link>
                     </>
                 ) :
@@ -19,7 +20,7 @@ class Sidebar extends React.Component {
                 <Link to='/login'>Login</Link>
                 <Link to='/signup'>Signup</Link>
                 </>}
-                <CategoryContainer filterMeal={this.props.filterMeal} categories={this.props.categories}/>
+                <Link to='/categories'>Categories</Link>
             </div>
         )
     }
@@ -27,7 +28,8 @@ class Sidebar extends React.Component {
 
 const stateToProps = state => {
     return{
-        loggedIn: state.authReducer.loggedIn
+        loggedIn: state.authReducer.loggedIn,
+        user: state.authReducer.currentUser
     }
 }
 
