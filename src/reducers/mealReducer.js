@@ -1,5 +1,5 @@
 
-const mealReducer = (state = {meals: [], randomMeal: [], loading: false}, action) => {
+const mealReducer = (state = {meals: [], userMeals: [], randomMeal: [], loading: false}, action) => {
     switch(action.type){
         case 'GET_MEALS':
             return{
@@ -19,6 +19,12 @@ const mealReducer = (state = {meals: [], randomMeal: [], loading: false}, action
                 meals: action.meals,
                 randomMeal: [],
                 loading: false
+            }
+
+        case 'CREATE_USER_MEAL':
+            return{
+                ...state,
+                userMeals: action.meal
             }
 
         default:
