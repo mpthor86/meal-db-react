@@ -1,6 +1,8 @@
+const url = 'http://localhost:3000'
+
 export const signup = user => {
     return dispatch => {
-        fetch('http://localhost:3000/users', {
+        fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -15,7 +17,7 @@ export const signup = user => {
 
 export const login = (user, history) => {
     return dispatch => {
-        fetch('http://localhost:3000/sessions', {
+        fetch(`${url}/sessions`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -35,7 +37,7 @@ export const login = (user, history) => {
 
 export const checkLoggedIn = () =>{
     return dispatch => {
-        fetch('http://localhost:3000/logged_in', {
+        fetch(`${url}/logged_in`, {
             credentials: 'include'
         })
         .then(res => res.json())
@@ -50,7 +52,7 @@ export const checkLoggedIn = () =>{
 
 export const logout = () => {
     return dispatch => {
-        fetch('http://localhost:3000/logout', {
+        fetch(`${url}/logout`, {
             method: 'DELETE',
             credentials: 'include'
         })
