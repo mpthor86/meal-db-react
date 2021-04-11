@@ -7,12 +7,11 @@ import {fetchMeals} from '../actions/mealActions'
 
 class Home extends React.Component {
     componentDidMount (){
-        console.log(this.props.randomMeal)
         this.props.fetchMeals()
     }
 
     renderRandom() {
-        return this.props.randomMeal.map((m) => <Meal key={m.idMeal} meal={m}/>)
+        return this.props.randomMeal.map((m) => <Meal key={m.idMeal} userMeals={this.props.userMeals} meal={m}/>)
      }
 
     render(){
@@ -26,7 +25,8 @@ class Home extends React.Component {
 
 const stateToProps = state => {
     return{
-        randomMeal: state.mealReducer.randomMeal
+        randomMeal: state.mealReducer.randomMeal,
+        userMeals: state.mealReducer.userMeals
     }
 }
 
