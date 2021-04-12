@@ -31,3 +31,9 @@ export const createMeal = (meal, user) => {
         .then(data => dispatch({type: 'CREATE_USER_MEAL', payload: {meal: data.meal}})) 
     }
 }
+
+export const fetchUserMeals = (user) => {
+    return disp => {
+        fetch(`${url}/meals`)
+    }
+}

@@ -2,7 +2,7 @@ const url = 'http://localhost:3000'
 
 export const signup = user => {
     return dispatch => {
-        fetch(url, {
+        fetch(`${url}/users`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -31,6 +31,7 @@ export const login = (user, history) => {
                 type: 'AUTH_SUCCESS', 
                 payload: {loggedIn: data.logged_in, currentUser: data.user},
             })
+            history.push('/')
         })
     }
 }

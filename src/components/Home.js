@@ -10,6 +10,8 @@ class Home extends React.Component {
         this.props.fetchMeals()
     }
 
+    
+
     renderRandom() {
         return this.props.randomMeal.map((m) => <Meal key={m.idMeal} userMeals={this.props.userMeals} meal={m}/>)
      }

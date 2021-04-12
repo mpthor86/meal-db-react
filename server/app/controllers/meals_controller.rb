@@ -9,6 +9,11 @@ class MealsController < ApplicationController
         end
     end
 
+    def index
+        byebug
+        meals = Meal.all.find_by(current_user.id)
+    end
+
     private
     def meal_params
         params.require(:meal).permit(:strMeal, :strMealThumb, :strArea, :strCategory, :strYoutube, :username)

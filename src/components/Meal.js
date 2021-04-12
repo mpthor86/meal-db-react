@@ -1,7 +1,6 @@
 import '../Meal.css'
 
 const Meal = (props) => {
-    console.log(props)
     return(
         <div className="meal-card">
             {props.userMeals ? <button onClick={() => props.likeClick(props.meal, props.user)}>Like</button> : ""}

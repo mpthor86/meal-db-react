@@ -12,6 +12,7 @@ import User from './components/user'
 //import Category from './components/Category';
 import CategoryContainer from './components/CategoryContainer';
 import MealContainer from './components/MealContainer';
+//import * as Cookies from 'js-cookie'
 
 class App extends Component {
 
