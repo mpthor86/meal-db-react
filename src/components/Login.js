@@ -16,7 +16,7 @@ class Login extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.login(this.state, this.props.history)
+        this.props.login(this.state)
         this.props.history.push('/')
     }
 
@@ -38,4 +38,10 @@ class Login extends React.Component {
     }
 }
 
-export default connect(null, {login})(Login)
+const dispToProps = disp => {
+    return{
+        login: (user) => disp(login(user))
+    }
+}
+
+export default connect(null, dispToProps)(Login)
