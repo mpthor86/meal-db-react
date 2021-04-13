@@ -15,7 +15,7 @@ export const signup = user => {
     }
 }
 
-export const login = (user, history) => {
+export const login = (user) => {
     return dispatch => {
         fetch(`${url}/sessions`, {
             method: 'POST',
@@ -31,7 +31,6 @@ export const login = (user, history) => {
                 type: 'AUTH_SUCCESS', 
                 payload: {loggedIn: data.logged_in, currentUser: data.user},
             })
-            history.push('/')
         })
     }
 }
