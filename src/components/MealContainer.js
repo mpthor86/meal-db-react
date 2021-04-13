@@ -15,7 +15,7 @@ class MealContainer extends React.Component {
     }
 
     likeClick = (meal) => {
-        this.props.createMeal(meal, this.props.user)
+        this.props.createMeal(meal)
     }
 
     render(){
