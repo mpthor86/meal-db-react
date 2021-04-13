@@ -10,12 +10,19 @@ class MealsController < ApplicationController
     end
 
     def index
-        meals = Meal.all.find_by(user_id: session[:id])
+        meals = Meal.all.where(user_id: session[:id])
         if meals
             render json: {status: 201, meals: meals}
         else
             render json: {status: 500, message: 'Could not find meals for this profile.'}
         end
+    end
+
+    def destroy
+        meal = Meal.all.find_by(id: params[:meal][:id])
+        Meal.destroy(meal.id)
+        meals = Meal.all.where(user_id: session[:id])
+        render json: {status: 201, meals: meals}
     end
 
     private
