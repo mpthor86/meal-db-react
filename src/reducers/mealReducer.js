@@ -24,7 +24,20 @@ const mealReducer = (state = {meals: [], userMeals: [], randomMeal: [], loading:
         case 'CREATE_USER_MEAL':
             return{
                 ...state,
-                userMeals: action.meal
+                userMeals: action.payload.meal
+            }
+
+        case 'ADD_USER_MEALS':
+            return{
+                ...state,
+                loading: false,
+                userMeals: action.payload.meals
+            }
+
+        case 'DELETE_USER_MEALS':
+            return{
+                ...state,
+                userMeals: action.meals
             }
 
         default:
