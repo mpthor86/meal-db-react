@@ -5,8 +5,7 @@ import {connect} from 'react-redux'
 class Signup extends React.Component {
     state = {
         username: "",
-        password: "",
-        password_confirm: ""
+        password: ""
     }
 
     handleChange = (e) => {
@@ -32,9 +31,6 @@ class Signup extends React.Component {
                     <label>Password:</label>
                     <input name="password" value={this.state.password} onChange={this.handleChange} type='password' />
                         <br />
-                    <label>Confirm Password:</label>
-                    <input name="password_confirm" value={this.state.passwordConfirm} onChange={this.handleChange} type='password' />
-                    <br />
                     <button type="submit">Signup</button>
                 </form>
             </div>
