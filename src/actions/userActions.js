@@ -16,8 +16,7 @@ export const fetchUser = (user) => {
     }
 }
 
-export const createMeal = (meal, user) => {
-    console.log(user)
+export const createMeal = (meal) => {
     return dispatch => {
         fetch(`${url}/meals`, {
             method: 'POST',
@@ -25,7 +24,7 @@ export const createMeal = (meal, user) => {
                 'Content-Type': 'application/json'
             },
             credentials: 'include',
-            body: JSON.stringify({meal: meal, user: user})
+            body: JSON.stringify({meal: meal})
         })
         .then(resp => resp.json())
         .then(data => dispatch({type: 'CREATE_USER_MEAL', payload: {meal: data.meal}})) 
@@ -34,6 +33,8 @@ export const createMeal = (meal, user) => {
 
 export const fetchUserMeals = (user) => {
     return disp => {
-        fetch(`${url}/meals`)
+        fetch(`${url}/meals`, {credentials: 'include'})
+        .then(res => res.json())
+        .then(json => disp({type: 'ADD_USER_MEALS', payload: {meals: json.meals}}))
     }
 }
