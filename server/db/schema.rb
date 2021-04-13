@@ -13,11 +13,11 @@
 ActiveRecord::Schema.define(version: 2021_04_12_211503) do
 
   create_table "meals", force: :cascade do |t|
-    t.string "name"
-    t.string "picture"
-    t.string "area"
-    t.string "category"
-    t.string "video"
+    t.string "strMeal"
+    t.string "strMealThumb"
+    t.string "strArea"
+    t.string "strCategory"
+    t.string "strYoutube"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
