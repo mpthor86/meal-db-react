@@ -5,12 +5,21 @@ import {getMealDetails} from '../actions/mealActions'
 import Meal from './Meal'
 
 class User extends React.Component {
+    state = {
+        search: "",
+        meals: []
+    }
+
     componentDidMount(){
         this.props.fetchUserMeals(this.props.user)
     }
 
     renderMeals(){
-        return this.props.meals.map((m) => <Meal loggedIn={this.props.loggedIn} handleClick={this.handleClick} key={m.idMeal} meal={m}/>)
+        if(this.state.meals.length !== 0){
+            return this.state.meals.map((m) => <Meal loggedIn={this.props.loggedIn} handleClick={this.handleClick} key={m.idMeal} meal={m}/>)
+        }else{
+            return this.props.meals.map((m) => <Meal loggedIn={this.props.loggedIn} handleClick={this.handleClick} key={m.idMeal} meal={m}/>)     
+        }
     }
 
     handleClick = (e, meal) => {
@@ -23,12 +32,28 @@ class User extends React.Component {
         }
     }  
 
+    handleChange = (e) => {
+        this.setState({
+           [e.target.name]: e.target.value
+        })
+    }
+
+    handleSubmit =(e) =>{
+        const arr = this.props.meals.filter((m) => m.strMeal.toLowerCase().includes(this.state.search.toLowerCase()))
+        this.setState({meals: arr})
+    }
+
+    renderSearch(){
+        return this.state.searchMeals.forEach((m) => <Meal loggedIn={this.props.loggedIn} handleClick={this.handleClick} key={m.idMeal} meal={m}/>)
+    }
+    
     render(){
         return(
             <div>
                 <h3>{this.props.user.username}'s profile</h3>
                 <h3><u>Your Meals</u></h3>
-                {this.props.loading === true ? "Loading" : this.renderMeals()}
+                <input name='search' type="text" value={this.state.search} onChange={this.handleChange}></input><button onClick={this.handleSubmit}>Search</button>
+                {this.props.loading === false ? this.renderMeals() : "Loading"}
             </div>
         )
     }
