@@ -4,10 +4,11 @@
   font-weight: bolder;
   border: rgb(0, 0, 0) solid 2px;
   padding: 1rem;
-  width: auto;
-  height: auto;
+  width: 15rem;
+  height: 20rem;
   display: inline-grid;
-  margin: 1rem 2rem;
+  margin-top: 3rem;
+  margin-left: 5rem;
   box-shadow: 3px 4px #000000;
   background-color:lightblue;
   }
