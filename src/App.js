@@ -1,5 +1,4 @@
 import './App.css';
-import Home from './components/Home'
 import {connect} from 'react-redux'
 import React, {Component} from 'react'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
@@ -9,10 +8,8 @@ import Sidebar from './components/Sidebar'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import User from './components/user'
-//import Category from './components/Category';
 import CategoryContainer from './components/CategoryContainer';
 import MealContainer from './components/MealContainer';
-//import * as Cookies from 'js-cookie'
 
 class App extends Component {
 
@@ -32,9 +29,15 @@ class App extends Component {
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/signup' component={Signup} />
                 <Route exact path='/categories' component={CategoryContainer} />
-                <Route exact path='/categories/:id' component={MealContainer} />
+                  <Route exact path='/categories/:id' 
+                    render={(props) => (
+                      <MealContainer meals={this.props.meals} {...props} isAuthed={true} />
+                    )}/>
                 <Route exact path='/users/:id' component={User} />
-                <Route path='/' component={Home} />
+                  <Route path='/' 
+                    render={(props) => (
+                      <MealContainer meals={this.props.randomMeal} {...props} isAuthed={true} />
+                    )} />
             </Switch>
           </Router>
       </div>
@@ -44,6 +47,8 @@ class App extends Component {
 
 const stateToProps = state => {
     return {
+      randomMeal: state.mealReducer.randomMeal,
+      meals: state.mealReducer.meals,
       user: state.authReducer.currentUser,
       category: state.categoryReducer.categories,
       mealId: state.mealReducer.meals
@@ -59,5 +64,3 @@ const dispToProps = disp => {
 }
 
 export default connect(stateToProps, dispToProps)(App)
-
-//    filterMeal: (category) => disp(filterMealByCategory(category)),
