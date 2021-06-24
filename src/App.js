@@ -22,7 +22,7 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-        <h1><u>The Meal DB on React</u></h1>
+        <h1><u>The Meal DB on React</u><img className="logo" src='/spaghetti logo.png' alt="not found"></img></h1>
           <Router>
                 <Sidebar className='sidebar'/>
             <Switch>
@@ -64,3 +64,4 @@ const dispToProps = disp => {
 }
 
 export default connect(stateToProps, dispToProps)(App)
+

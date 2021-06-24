@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.logo {
+  height: 10rem;
+  width: 12rem;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -17,6 +22,7 @@
   width:max-content;
   justify-self: center;
 }
+
 
 .App-header {
   background-color: #282c34;
