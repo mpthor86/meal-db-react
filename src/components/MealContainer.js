@@ -1,6 +1,7 @@
 import React from 'react'
 import Meal from './Meal'
-import UserMeals from './userMeals'
+import MealDetails from './MealDetails'
+//import UserMeals from './userMeals'
 import {connect} from 'react-redux'
 import {getMealDetails} from '../actions/mealActions'
 import {createMeal, deleteMeal} from '../actions/userActions'
@@ -8,27 +9,27 @@ import {createMeal, deleteMeal} from '../actions/userActions'
 class MealContainer extends React.Component {
 
     renderMeals(){
-        return this.props.meals.map((m) => <Meal loggedIn={this.props.loggedIn} handleClick={this.handleClick} key={m.idMeal} meal={m}/>)
+        return this.props.meals.map((m) => <Meal loggedIn={this.props.loggedIn} mealClick={this.mealClick} key={m.idMeal} meal={m}/>)
     }
 
-    renderUserMeals(){
-        return this.props.userMeals.map((m) => <Meal loggedIn={this.props.loggedIn} handleClick={this.handleClick} key={m.idMeal} meal={m}/>)
+    renderMealDetails(){
+        return this.props.meals.map((m) => <MealDetails key={m.idMeal} meal={m}/>)
     }
 
-    handleClick = (e, meal) => {
+    mealClick = (e, meal) => {
         if (e.target.innerText === 'Delete'){
             this.props.deleteMeal(meal)
         }else if(e.target.innerText === 'Details'){
-            this.props.getDetails(meal)
+            this.props.getDetails(meal.idMeal)
         }else if(e.target.innerText === 'Like'){
             this.props.createMeal(meal)
         }
-    }    
+    }
 
     render(){
         return(
             <div>
-                {this.props.userMeals ? this.renderUserMeals : this.renderMeals()}
+                {this.props.mealLoading ? <img src="https://i.pinimg.com/originals/b5/66/e3/b566e354ae8a23022884e0ac9f3cc88f.gif" alt=""></img> : this.renderMeals()}
             </div>
             
         )
@@ -37,7 +38,6 @@ class MealContainer extends React.Component {
 
 const mapStateToProps = state => {
     return {
-      meals: state.mealReducer.meals,
       userMeals: state.mealReducer.userMeals,
       mealLoading: state.mealReducer.loading,
       user: state.authReducer.currentUser,
@@ -55,3 +55,5 @@ const dispToProps = disp => {
   
 
 export default connect(mapStateToProps, dispToProps)(MealContainer)
+
+//{this.props.userMeals ? this.renderUserMeals : this.renderMeals()}
