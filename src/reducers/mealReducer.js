@@ -1,5 +1,5 @@
 
-const mealReducer = (state = {meals: [], userMeals: [], randomMeal: [], loading: false}, action) => {
+const mealReducer = (state = {meals: [], userMeals: [], randomMeal: [], mealDetails: [], loading: false}, action) => {
     switch(action.type){
         case 'GET_MEALS':
             return{
@@ -16,7 +16,7 @@ const mealReducer = (state = {meals: [], userMeals: [], randomMeal: [], loading:
 
         case 'ADD_MEALS':
             return{
-                ...state,
+                ...state.randomMeal,
                 meals: action.meals,
                 loading: false
             }
@@ -38,6 +38,14 @@ const mealReducer = (state = {meals: [], userMeals: [], randomMeal: [], loading:
             return{
                 ...state,
                 userMeals: action.meals
+            }
+
+        case 'MEAL_DETAILS':
+            return{
+                ...state.randomMeal,
+                meals: [],
+                mealDetails: action.meals,
+                loading: false
             }
 
         default:
