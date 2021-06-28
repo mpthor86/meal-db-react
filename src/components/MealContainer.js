@@ -9,11 +9,11 @@ import {createMeal, deleteMeal} from '../actions/userActions'
 class MealContainer extends React.Component {
 
     renderMeals(){
-        return this.props.meals.map((m) => <Meal loggedIn={this.props.loggedIn} mealClick={this.mealClick} key={m.idMeal} meal={m}/>)
-    }
-
-    renderMealDetails(){
-        return this.props.meals.map((m) => <MealDetails key={m.idMeal} meal={m}/>)
+        if(this.props.mealDetails){
+            return this.props.mealDetails.map((m) => <MealDetails key={m.idMeal} meal={m}/>)
+        }else {
+            return this.props.meals.map((m) => <Meal loggedIn={this.props.loggedIn} mealClick={this.mealClick} key={m.idMeal} meal={m}/>)
+        }
     }
 
     mealClick = (e, meal) => {
@@ -29,6 +29,7 @@ class MealContainer extends React.Component {
     render(){
         return(
             <div>
+                {console.log(this.props.meals)}
                 {this.props.mealLoading ? <img src="https://i.pinimg.com/originals/b5/66/e3/b566e354ae8a23022884e0ac9f3cc88f.gif" alt=""></img> : this.renderMeals()}
             </div>
             
@@ -42,6 +43,7 @@ const mapStateToProps = state => {
       mealLoading: state.mealReducer.loading,
       user: state.authReducer.currentUser,
       loggedIn: state.authReducer.loggedIn,
+      mealDetails: state.mealReducer.mealDetails
     }
 }
 
