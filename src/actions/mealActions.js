@@ -33,3 +33,9 @@ export const getMealDetails = (mealId) => {
         .then(json => {disp({type: 'MEAL_DETAILS', meals: json.meals})})
     }
 }
+
+export const homeState = () => {
+    return (disp) => {
+        disp({type: 'HOME_STATE'})
+    }
+}
