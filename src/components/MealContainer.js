@@ -9,13 +9,15 @@ import {createMeal, deleteMeal} from '../actions/userActions'
 class MealContainer extends React.Component {
 
     renderMeals(){
-        if(this.props.mealDetails){
+        if(this.props.mealDetails.length !== 0){
             return this.props.mealDetails.map((m) => <MealDetails key={m.idMeal} meal={m}/>)
-        }else {
+        }else if(this.props.meals.length !== 0){
             return this.props.meals.map((m) => <Meal loggedIn={this.props.loggedIn} mealClick={this.mealClick} key={m.idMeal} meal={m}/>)
+        }else if(this.props.randomMeal.length !== 0){
+            return this.props.randomMeal.map((m) => <Meal meal={m} key={m.idMeal} mealClick={this.mealClick} />)
         }
     }
-
+    
     mealClick = (e, meal) => {
         if (e.target.innerText === 'Delete'){
             this.props.deleteMeal(meal)
@@ -29,7 +31,6 @@ class MealContainer extends React.Component {
     render(){
         return(
             <div>
-                {console.log(this.props.meals)}
                 {this.props.mealLoading ? <img src="https://i.pinimg.com/originals/b5/66/e3/b566e354ae8a23022884e0ac9f3cc88f.gif" alt=""></img> : this.renderMeals()}
             </div>
             
@@ -40,6 +41,8 @@ class MealContainer extends React.Component {
 const mapStateToProps = state => {
     return {
       userMeals: state.mealReducer.userMeals,
+      randomMeal: state.mealReducer.randomMeal,
+      meals: state.mealReducer.meals,
       mealLoading: state.mealReducer.loading,
       user: state.authReducer.currentUser,
       loggedIn: state.authReducer.loggedIn,

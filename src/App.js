@@ -29,15 +29,9 @@ class App extends Component {
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/signup' component={Signup} />
                 <Route exact path='/categories' component={CategoryContainer} />
-                  <Route exact path='/categories/:id' 
-                    render={(props) => (
-                      <MealContainer meals={this.props.meals} {...props} isAuthed={true} />
-                    )}/>
+                <Route exact path='/categories/:id' component={MealContainer} />
                 <Route exact path='/users/:id' component={User} />
-                  <Route path='/' 
-                    render={(props) => (
-                      <MealContainer meals={this.props.randomMeal} {...props} isAuthed={true} />
-                    )} />
+                <Route path='/' component={MealContainer}/>
             </Switch>
           </Router>
       </div>
@@ -65,3 +59,12 @@ const dispToProps = disp => {
 
 export default connect(stateToProps, dispToProps)(App)
 
+
+//render={(props) => (
+//  <MealContainer randomMeal={this.props.randomMeal} {...props} isAuthed={true} />
+//)} 
+
+
+//render={(props) => (
+//  <MealContainer meals={this.props.meals} {...props} isAuthed={true} />
+//)}/>
