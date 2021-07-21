@@ -7,10 +7,28 @@ import {getMealDetails} from '../actions/mealActions'
 import {createMeal, deleteMeal} from '../actions/userActions'
  
 class MealContainer extends React.Component {
+    getKeyValues(obj, term){
+        let keys = []
+        let values= []
+        let ingredient= []
 
+        for(let key in obj){
+            if(obj.hasOwnProperty(key)){
+                keys.push(key)
+                values.push(obj[key])                
+            } 
+        }
+        for(let i=0; i< keys.length; ++i){
+            if(keys[i].includes(term)){
+                ingredient.push(values[i])
+            }
+        }
+        return ingredient.filter((el)=> el !== "")
+    }
+    
     renderMeals(){
         if(this.props.mealDetails.length !== 0){
-            return this.props.mealDetails.map((m) => <MealDetails key={m.idMeal} meal={m}/>)
+            return this.props.mealDetails.map((m) => <MealDetails key={m.idMeal} meal={m} mealClick={this.mealClick} measure={this.getKeyValues(this.props.mealDetails[0], 'strMeasure')} ingredients={this.getKeyValues(this.props.mealDetails[0], 'strIng')}/>)
         }else if(this.props.meals.length !== 0){
             return this.props.meals.map((m) => <Meal loggedIn={this.props.loggedIn} mealClick={this.mealClick} key={m.idMeal} meal={m}/>)
         }else if(this.props.randomMeal.length !== 0){
@@ -29,8 +47,10 @@ class MealContainer extends React.Component {
     }
 
     render(){
+        
         return(
             <div>
+                {this.getKeyValues(this.props.mealDetails[0])}
                 {this.props.mealLoading ? <img src="https://i.pinimg.com/originals/b5/66/e3/b566e354ae8a23022884e0ac9f3cc88f.gif" alt=""></img> : this.renderMeals()}
             </div>
             

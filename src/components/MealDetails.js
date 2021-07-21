@@ -2,8 +2,22 @@ import '../Meal.css'
 
 const MealDetails = (props) => {
     return(
-        <div className="meal-card">
-            <h3>{props.meal.strMeal} Details</h3>
+        <div className="detail-card">
+            <h3>{props.meal.strMeal}</h3>
+            <img className="meal-pic" alt="" src={props.meal.strMealThumb} />
+            <table className='ingredients'>
+                <td className='column'>
+            {props.measure.map((el)=> <tr>{el}</tr>)}
+                </td>
+                <td className='column'>
+            {props.ingredients.map((el)=> <tr>- {el}</tr>)}
+                </td>
+                <td className='instructions'>
+            {props.meal.strInstructions}
+                </td>
+            </table>
+            <a href={props.meal.strYoutube} target='_blank' rel = "noopener noreferrer">Video Instructions</a>
+            <button className="likeBtn" onClick={(e) => props.mealClick(e, props.meal)}>Like</button>
         </div>
     )
 }
