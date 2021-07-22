@@ -31,6 +31,8 @@ class MealContainer extends React.Component {
             return this.props.mealDetails.map((m) => <MealDetails key={m.idMeal} meal={m} mealClick={this.mealClick} measure={this.getKeyValues(this.props.mealDetails[0], 'strMeasure')} ingredients={this.getKeyValues(this.props.mealDetails[0], 'strIng')}/>)
         }else if(this.props.meals.length !== 0){
             return this.props.meals.map((m) => <Meal loggedIn={this.props.loggedIn} mealClick={this.mealClick} key={m.idMeal} meal={m}/>)
+        }else if(this.props.userMeals.length !== 0){
+            return this.props.userMeals.map((m) => <Meal loggedIn={this.props.loggedIn} mealClick={this.mealClick} key={m.id} meal={m} />)
         }else if(this.props.randomMeal.length !== 0){
             return this.props.randomMeal.map((m) => <Meal meal={m} key={m.idMeal} mealClick={this.mealClick} />)
         }

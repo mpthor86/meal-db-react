@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {fetchUserMeals, deleteMeal, createMeal} from '../actions/userActions'
 import {getMealDetails} from '../actions/mealActions'
 import Meal from './Meal'
+import MealContainer from './MealContainer'
 
 class User extends React.Component {
     state = {
@@ -15,22 +16,10 @@ class User extends React.Component {
     }
 
     renderMeals(){
-        if(this.state.meals.length !== 0){
-            return this.state.meals.map((m) => <Meal loggedIn={this.props.loggedIn} handleClick={this.handleClick} key={m.idMeal} meal={m}/>)
-        }else{
-            return this.props.meals.map((m) => <Meal loggedIn={this.props.loggedIn} handleClick={this.handleClick} key={m.idMeal} meal={m}/>)     
-        }
+        return(
+            <MealContainer />
+        )
     }
-
-    handleClick = (e, meal) => {
-        if (e.target.innerText === 'Delete'){
-            this.props.deleteMeal(meal)
-        }else if(e.target.innerText === 'Details'){
-            this.props.getDetails(meal)
-        }else if(e.target.innerText === 'Like'){
-            this.props.createMeal(meal)
-        }
-    }  
 
     handleChange = (e) => {
         this.setState({
