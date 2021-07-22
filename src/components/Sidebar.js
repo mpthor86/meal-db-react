@@ -28,7 +28,7 @@ class Sidebar extends React.Component {
                         <Link to='/login'>Login</Link>
                         <Link to='/signup'>Signup</Link>
                         </>}
-                        <Link to='/categories'>Categories</Link>
+                        <Link to='/categories' onClick={() => this.props.homeState()}>Categories</Link>
                 </div>
         )
     }
