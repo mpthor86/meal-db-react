@@ -17,6 +17,7 @@ const mealReducer = (state = {meals: [], userMeals: [], randomMeal: [], mealDeta
         case 'ADD_MEALS':
             return{
                 ...state,
+                mealDetails: [],
                 meals: action.meals,
                 loading: false
             }
